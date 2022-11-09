@@ -1,7 +1,7 @@
 
 # data centers
 require(openxlsx)
-dat <- read.xlsx ("data.xlsx")
+dat <- read.xlsx ("data_map.xlsx")
 
 require(rnaturalearth)
 require(ggplot2)
@@ -34,7 +34,7 @@ wm <- ggplot() +
         plot.margin = unit(c(0,-0.8,0,0.3), "cm")) +
   labs (title = "Synthesis Centers around the Globe",
         subtitle = "Active (triangles) and discontinued centers (points)",
-        caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017")
+        caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
 
 
 map_SC <- wm + geom_point(data  = dat, aes (x=Long,y=Lat,
