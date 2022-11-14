@@ -2,7 +2,7 @@
 title: "Synthesis science in Brazil"
 author: "A.L. Luza et al. in prep."
 date: "2022-11-14"
-output: html_document
+output: github_document
 ---
 
 
