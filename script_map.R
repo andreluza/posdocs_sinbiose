@@ -2,6 +2,14 @@
 # data centers
 require(openxlsx)
 dat <- read.xlsx ("data_map.xlsx")
+# remove CHina and South Africa ( we dont know the status )
+
+dat <- dat %>% 
+  filter (Country %in% c("China", "South Africa") == F)
+
+
+
+
 
 require(rnaturalearth)
 require(ggplot2)
@@ -37,7 +45,8 @@ wm <- ggplot() +
         caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
 
 
-map_SC <- wm + geom_point(data  = dat, aes (x=Long,y=Lat,
+# require(dplyr)
+map_SC <- wm + geom_point(data  = dat,aes (x=Long,y=Lat,
                                   group=Active,
                                   shape = Active), 
                 size=3) + 
