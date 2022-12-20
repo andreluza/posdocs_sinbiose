@@ -1,14 +1,12 @@
 
 # data centers
 require(openxlsx)
+require(dplyr)
 dat <- read.xlsx ("data_map.xlsx")
-# remove CHina and South Africa ( we dont know the status )
 
+# remove CHina and South Africa ( we dont know their current status )
 dat <- dat %>% 
   filter (Country %in% c("China", "South Africa") == F)
-
-
-
 
 
 require(rnaturalearth)
@@ -64,4 +62,5 @@ map_SC <- wm + geom_point(data  = dat,aes (x=Long,y=Lat,
   theme(legend.position = "none") 
 
 
-map_SC
+ggsave(filename = "map_SC.png", width = 12,
+       height = 6,dpi=300) 
