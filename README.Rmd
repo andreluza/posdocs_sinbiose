@@ -1,7 +1,7 @@
 ---
-title: "Synthesis science in Brazil"
+title: "Beyond data labor: Sowing synthesis science in the Global South"
 author: "A.L. Luza et al. in prep."
-date: "2022-11-14"
+date: "2023-03-02"
 output: github_document
 ---
 
@@ -25,6 +25,21 @@ source ("script_map.R")
 
 map_SC
 
+
+
+```
+
+
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+
+#### This map was produced using the following software and associated packages:
+
+```{r pressure, echo=F,warning=F,message=F}
+
+sessionInfo()
 
 
 ```

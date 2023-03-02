@@ -6,7 +6,8 @@ dat <- read.xlsx ("data_map.xlsx")
 
 # remove CHina and South Africa ( we dont know their current status )
 dat <- dat %>% 
-  filter (Country %in% c("South Africa") == F)
+  filter (Country %in% c("South Africa") == F) %>%
+  filter (Active == "Yes")
 
 
 require(rnaturalearth)
@@ -39,7 +40,7 @@ wm <- ggplot() +
         #title = element_blank(),
         plot.margin = unit(c(0,-0.8,0,0.3), "cm")) +
   labs (title = "Synthesis Centers/Initiatives around the Globe",
-        subtitle = "Active (triangles) and discontinued centers (points)",
+        #subtitle = "Active (triangles) and discontinued centers (points)",
         caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
 
 
