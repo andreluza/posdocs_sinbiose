@@ -12,7 +12,12 @@ A.L. Luza et al. in prep.
 <!-- badges: start -->
 <!-- badges: end -->
 
-#### This map was produced using the following software and associated packages:
+The map showing active and inactive/discontinued synthesis
+centers/initiatives.
+
+<img src="README_files/figure-gfm/unnamed-chunk-2-1.png" width="120%" height="120%" style="display: block; margin: auto;" />
+
+#### These maps were produced using the following software and associated packages:
 
     ## R version 4.2.2 (2022-10-31 ucrt)
     ## Platform: x86_64-w64-mingw32/x64 (64-bit)
