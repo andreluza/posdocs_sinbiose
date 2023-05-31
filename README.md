@@ -6,16 +6,13 @@ A.L. Luza et al. in prep.
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <!-- badges: start -->
 <!-- badges: end -->
-
-<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="120%" height="120%" style="display: block; margin: auto;" />
-
 <!-- badges: start -->
 <!-- badges: end -->
 
-The map showing active and inactive/discontinued synthesis
-centers/initiatives.
+The map with all synthesis centers and initiatives that ever existed
+(both active and inactive/discontinued).
 
-<img src="README_files/figure-gfm/unnamed-chunk-2-1.png" width="120%" height="120%" style="display: block; margin: auto;" />
+<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="120%" height="120%" style="display: block; margin: auto;" />
 
 #### These maps were produced using the following software and associated packages:
 
