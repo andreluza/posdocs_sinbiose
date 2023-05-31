@@ -34,6 +34,8 @@ map_SC
 <!-- badges: start -->
 <!-- badges: end -->
 
+
+
 The map showing active and inactive/discontinued synthesis centers/initiatives.
 
 ```{r, echo = F, fig.height=8,fig.width=17,fig.align= "center",fig.margin=T, message=F, warning=F,out.width="120%",out.height="120%"}

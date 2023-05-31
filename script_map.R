@@ -100,7 +100,7 @@ wm_complete <- ggplot() +
         plot.margin = unit(c(0,-0.8,0,0.3), "cm")) +
   labs (title = "Synthesis Centers/Initiatives around the Globe",
         #subtitle = "Active (triangles) and discontinued centers (points)",
-        caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
+        caption = "Data sources: The International Synthesis Consortium\nBaron et al. (2017)\nWyborn et al. (2018)\nAuthors' knowledge")
 # plot
 map_complete <- wm_complete + geom_point(data  = dat_complete,
                           aes (x=Long,y=Lat,
