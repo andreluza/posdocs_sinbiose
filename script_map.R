@@ -2,6 +2,8 @@
 # data centers
 require(openxlsx)
 require(dplyr)
+
+# load data
 dat_complete <- read.xlsx ("data_map.xlsx")
 
   # remove CHina and South Africa ( we dont know their current status )
@@ -39,7 +41,7 @@ wm <- ggplot() +
         plot.margin = unit(c(0,-0.8,0,0.3), "cm")) +
   labs (title = "Synthesis Centers/Initiatives around the Globe",
         #subtitle = "Active (triangles) and discontinued centers (points)",
-        caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
+        caption = "Data sources: The International Synthesis Consortium\nBaron et al. (2017)\nWyborn et al. (2018)\nAuthors' knowledge")
 
 
 # require(dplyr)
@@ -66,6 +68,8 @@ map_SC <- wm + geom_point(data  = dat,
 
 ggsave(filename = "map_SC.png", width = 12,
        height = 6,dpi=300) 
+ggsave(filename = "map_SC2.pdf", width = 14,
+       height = 8) 
 
 
 # require(dplyr)
