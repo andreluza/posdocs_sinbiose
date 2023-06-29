@@ -19,6 +19,7 @@ require(ggrepel)
 world <- ne_countries(scale = "medium", returnclass = "sf")
 world$colour_Country <- ifelse (world$name_sort %in% dat$Country, "orange","gray90")
 
+
 # cortar o mapa para ver a america do Sul e parte da central
 wm <- ggplot() + 
   geom_sf (data=world, size = 0.1, 
@@ -44,7 +45,10 @@ wm <- ggplot() +
         caption = "Data sources: The International Synthesis Consortium\nBaron et al. (2017)\nWyborn et al. (2018)\nAuthors' knowledge")
 
 
-# require(dplyr)
+wm 
+
+
+# add dat
 map_SC <- wm + geom_point(data  = dat,
                           aes (x=Long,y=Lat,
                                   group=Active,
@@ -65,14 +69,10 @@ map_SC <- wm + geom_point(data  = dat,
   xlab("") + ylab("") + 
   theme(legend.position = "none") 
 
-
-ggsave(filename = "map_SC.png", width = 12,
-       height = 6,dpi=300) 
-ggsave(filename = "map_SC2.pdf", width = 14,
-       height = 8) 
+map_SC 
 
 
-# require(dplyr)
+
 ## maps
 # mapa mundi
 world <- ne_countries(scale = "medium", returnclass = "sf")
@@ -119,11 +119,73 @@ map_complete <- wm_complete + geom_point(data  = dat_complete,
                    box.padding = 0.3,
                    max.overlaps=100)+
   xlab("") + ylab("") + 
-  theme(legend.position = "none") +
-  labs (title = "Active (triange) and discontinued/inactive (circle)\nSynthesis Centers/Initiatives around the Globe",
-        #subtitle = "Active (triangles) and discontinued centers (points)",
-        caption = "Data sources: The International Synthesis Consortium\nBaron et al., 2017\nAuthors' knowledge")
+  theme(legend.position = "none") 
+map_complete
+ggsave(filename = "map_SC_complete.png", width = 16,
+       height = 8,dpi=300) 
 
 
+library(tidyverse)
+library(ggthemes)
 
+world_map = map_data("world") %>% 
+  filter(! long > 180)
+
+countries = world_map %>% 
+  distinct(region) %>% 
+  rowid_to_column() 
+
+
+dat<-dat %>% 
+  mutate (Country = recode ( Country,
+                            "United States of America" = "USA"),
+          region = Country)
+  
+
+countries$colour_Country <- ifelse (countries$region %in% 
+                                      dat$Country, "orange","gray90")
+
+
+plot1<- countries %>% 
+  ggplot(aes(fill = colour_Country,
+             color= "gray20",
+             map_id = region)) +
+ geom_map(map = world_map,
+           inherit.aes = T) +
+  expand_limits(x = world_map$long, y = world_map$lat) +
+  coord_flip()+
+  coord_map("moll") +
+  theme_map()+
+  scale_fill_manual(values = c("gray90" = "gray90",
+                    "orange" = "orange")) +
+  scale_colour_manual(values = c("gray20" = "gray70")) +
+  theme(legend.position = "none")
+
+plot2<-plot1 + 
+  geom_point(data  = dat,
+             aes (x=Long,y=Lat,
+                  group=Active,
+                  shape = Active), 
+             size=5,
+             
+             inherit.aes = F) + 
+  geom_label_repel(data = dat %>% # remove CHina and South Africa ( we dont know their current status )
+                     filter (Country %in% c("South Africa") == F) %>%
+                     filter (Active == "Yes"), aes(x=Long, 
+                                                   y=Lat,
+                                                   label = paste (Abbreviation, 
+                                                                  Abb_Country,sep=", ")),
+                   size = 6,
+                   fill = "white",
+                   colour="black",
+                   alpha=0.8,
+                   min.segment.length = 0,
+                   box.padding = 0.3,
+                   max.overlaps=100)+
+  xlab("") + ylab("") + 
+  theme(legend.position = "none") 
+
+plot2
+ggsave(filename = "map_SC.pdf", width = 14,
+       height = 8) 
 
